@@ -1,5 +1,6 @@
 import React from 'react'
 import { User } from 'lucide-react'
+import { formatDateDifference } from '@/lib/utils'
 
 type QuestionHeaderProps = {
 	name: string
@@ -20,7 +21,7 @@ export default function QuestionHeader(props: Readonly<QuestionHeaderProps>) {
 				</p>
 				<p className={'text-sm text-gray-600 dark:text-gray-400'}>
 					<time dateTime={date} title={date}>
-						{date}
+						{formatDateDifference(date)}
 					</time>
 				</p>
 			</div>
