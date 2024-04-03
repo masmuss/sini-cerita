@@ -7,13 +7,12 @@ import { SendHorizontal } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { FieldValues, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import questionSchema from '@/lib/schemas/question-schema'
-import { createQuestion } from '@/actions/question-action'
 import * as z from 'zod'
 import { toast } from 'sonner'
 import { createReply } from '@/actions/reply-action'
+import replySchema from '@/lib/schemas/reply-schema'
 
-type FormData = z.infer<typeof questionSchema>
+type FormData = z.infer<typeof replySchema>
 
 type ReplyFormProps = {
 	questionId: string
@@ -28,7 +27,7 @@ export default function ReplyForm(props: Readonly<ReplyFormProps>) {
 		formState: { errors, isSubmitting, isDirty, isValid },
 		reset,
 	} = useForm<FormData>({
-		resolver: zodResolver(questionSchema),
+		resolver: zodResolver(replySchema),
 		delayError: 1000,
 	})
 
@@ -36,6 +35,7 @@ export default function ReplyForm(props: Readonly<ReplyFormProps>) {
 		await createReply(formData.text, questionId)
 
 		toast.success('Jawaban berhasil dikirim!', {
+			description: 'Jawaban kamu akan segera ditampilkan di halaman ini',
 			action: {
 				label: 'Tutup',
 				onClick: () => {
@@ -47,7 +47,7 @@ export default function ReplyForm(props: Readonly<ReplyFormProps>) {
 	}
 
 	return (
-		<Card className={'mt-2 border-0'}>
+		<Card className={'mb-4 ml-6 mt-2 border-0 lg:ml-12'}>
 			<form action={''} onSubmit={handleSubmit(onSubmit)} method={'POST'}>
 				<input type="hidden" value={questionId} />
 				<Textarea

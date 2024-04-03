@@ -8,7 +8,7 @@ export default async function MainPage() {
 	const { questions } = await getAllQuestions()
 
 	return (
-		<div className={'mx-auto max-w-3xl py-20'}>
+		<div className={'mx-auto px-6 py-20 md:max-w-3xl md:px-0'}>
 			<h1 className={'font-semibold'}>Pertanyaan</h1>
 			<QuestionForm />
 
