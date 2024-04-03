@@ -1,8 +1,10 @@
 import React from 'react'
-import QuestionWrapper from '@/components/views/question/partials/question-wrapper'
-import QuestionContent from '@/components/views/question/partials/question-content'
-import QuestionHeader from '@/components/views/question/partials/question-header'
 import { Question } from '@/lib/types/question'
+import QuestionCard from '@/components/views/question/question-card'
+import ReplyCard from '@/components/views/reply/reply-card'
+import { Reply } from '@/lib/types/reply'
+import {Card} from "@/components/ui/card";
+import {cn} from "@/lib/utils";
 
 type QuestionsListProps = {
 	questions: Question[]
@@ -13,19 +15,20 @@ export default function QuestionsList({
 }: Readonly<QuestionsListProps>) {
 	return (
 		<section className={'bg-white py-8 lg:py-16'}>
-			<div className={'mx-auto w-full divide-y md:max-w-4xl md:px-4'}>
+			<div className={cn('mx-auto space-y-4 w-full', 'md:max-w-4xl')}>
 				{questions.length === 0 && (
-					<p className={'text-center py-10 text-gray-500'}>
+					<p className={'text-center text-gray-500'}>
 						Belum ada pertanyaan, jadilah yang pertama bertanya!
 					</p>
 				)}
-				{questions.map((question) => (
-					<div className={'space-y'} key={question._id}>
-						<QuestionWrapper>
-							<QuestionHeader name={'Anonim'} date={question.createdAt} />
-							<QuestionContent>{question.text}</QuestionContent>
-						</QuestionWrapper>
-					</div>
+				{questions.map((question: Question) => (
+					<Card className={cn('space-y divide-y pr-4', 'md:p-4 md:pr-10')} key={question._id}>
+						<QuestionCard question={question} />
+						{question.replies &&
+							question.replies.map((reply: Reply) => (
+								<ReplyCard reply={reply} key={reply._id} />
+							))}
+					</Card>
 				))}
 			</div>
 		</section>

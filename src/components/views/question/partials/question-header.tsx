@@ -1,5 +1,8 @@
+'use client'
+
 import React from 'react'
 import { User } from 'lucide-react'
+
 import { cn, formatDateDifference } from '@/lib/utils'
 
 type QuestionHeaderProps = {
@@ -18,10 +21,15 @@ export default function QuestionHeader(props: Readonly<QuestionHeaderProps>) {
 						'dark:text-white'
 					)}
 				>
-					<User className={'mr-2 w-5 h-5 md:w-7 md:h-7'} />
+					<User className={'mr-2 h-5 w-5 md:h-7 md:w-7'} />
 					{name}
 				</p>
-				<p className={cn('text-xs text-gray-600 dark:text-gray-400', 'md:text-sm')}>
+				<p
+					className={cn(
+						'text-xs text-gray-600 dark:text-gray-400',
+						'md:text-sm'
+					)}
+				>
 					<time dateTime={date} title={date}>
 						{formatDateDifference(date)}
 					</time>

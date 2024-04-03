@@ -5,6 +5,7 @@ const db = () => {
 		console.log('already connected')
 		return
 	}
+
 	mongoose
 		.connect(process.env.MONGO_DB_URI as string)
 		.then(() => console.log('connected'))

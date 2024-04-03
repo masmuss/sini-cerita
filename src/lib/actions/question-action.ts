@@ -3,21 +3,20 @@
 import db from '@/lib/config/db'
 import { revalidatePath } from 'next/cache'
 import QuestionModel from '@/lib/models/question-model'
-import { Question } from '@/lib/types/question'
+import Reply from '@/lib/models/reply-model'
 
 db()
 
-export async function getAllQuestions(): Promise<Omit<Question[], any>> {
+export async function getAllQuestions() {
 	try {
-		const questions = await QuestionModel.find()
+		const questionCollections = QuestionModel.find()
 			.populate({
-				path: 'Reply',
-				model: 'Reply',
-				strictPopulate: false,
+				path: 'replies',
+				model: Reply,
 			})
 			.sort({ createdAt: -1 })
-			.exec()
-		return { questions }
+
+		return await questionCollections
 	} catch (error) {
 		// @ts-ignore
 		return { error: error?.message as string }

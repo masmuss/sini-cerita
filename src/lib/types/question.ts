@@ -1,11 +1,9 @@
+import { Reply } from '@/lib/types/reply'
+
 export type Question = {
 	_id: string
 	text: string
-	replies?: {
-		_id: string
-		text: string
-		questionId: string
-	}[]
+	replies?: Reply[]
 	createdAt: string
 	updatedAt: string
 }
