@@ -8,8 +8,13 @@ import { Toaster } from '@/components/ui/sonner'
 const robotoMono = Roboto_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+	metadataBase: new URL(
+		process.env.NODE_ENV === 'production'
+			? 'https://ask.khoirul.me'
+			: 'http://localhost:3000'
+	),
 	title: 'Tanya.in',
-	description: 'Tanya apapun atau beri kritik dan saran  buat aku di sini.',
+	description: 'Tanya apapun atau beri kritik dan saran buat aku di sini.',
 }
 
 export default function RootLayout({

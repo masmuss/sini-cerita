@@ -78,7 +78,6 @@ export default async function Image() {
 				</div>
 			</div>
 		),
-
 		// ImageResponse options
 		{
 			// For convenience, we can re-use the exported opengraph-image

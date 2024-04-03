@@ -12,10 +12,10 @@ export default function QuestionsList({
 	questions,
 }: Readonly<QuestionsListProps>) {
 	return (
-		<section className={'bg-white py-8 dark:bg-gray-900 lg:py-16'}>
-			<div className={'mx-auto max-w-4xl divide-y px-4'}>
+		<section className={'bg-white py-8 lg:py-16'}>
+			<div className={'mx-auto w-full divide-y md:max-w-4xl md:px-4'}>
 				{questions.length === 0 && (
-					<p className={'text-center text-gray-500'}>
+					<p className={'text-center py-10 text-gray-500'}>
 						Belum ada pertanyaan, jadilah yang pertama bertanya!
 					</p>
 				)}

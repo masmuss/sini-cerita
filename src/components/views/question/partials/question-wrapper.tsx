@@ -13,8 +13,8 @@ function QuestionWrapper(props: Readonly<QuestionWrapperProps>) {
 		<article
 			className={cn(
 				isReply && 'ml-6 lg:ml-12',
-				'p-6 text-base',
-				'dark:bg-gray-900'
+				'px-4 py-4 text-sm',
+				'md:p-6 md:text-base'
 			)}
 		>
 			{children}

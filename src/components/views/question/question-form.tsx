@@ -46,7 +46,8 @@ export default function QuestionForm() {
 				<Textarea
 					className={cn(
 						errors?.text?.message ? 'border-red-400' : 'border-gray-200',
-						'min-h-fit resize-none rounded-b-none border p-4',
+						'text-sm min-h-fit resize-none rounded-b-none border p-4',
+						'md:text-base',
 						'focus-visible:ring-0 focus-visible:ring-offset-0'
 					)}
 					rows={5}
@@ -63,7 +64,7 @@ export default function QuestionForm() {
 					<div>
 						{/*@ts-ignore*/}
 						{errors?.text?.message && (
-							<span className={'px-2 text-sm text-red-400'}>
+							<span className={'px-2 text-xs md:text-sm text-red-400'}>
 								Eits, pertanyaan gaboleh kosong!
 							</span>
 						)}
@@ -73,8 +74,8 @@ export default function QuestionForm() {
 						disabled={isSubmitting || !isDirty || !isValid}
 						type={'submit'}
 					>
-						<span>Kirim pertanyaan</span>
-						<SendHorizontal className={'ml-2 h-5 w-5 stroke-1'} size={'sm'} />
+						<span className={'text-xs md:text-base'}>Kirim pertanyaan</span>
+						<SendHorizontal className={'ml-2 h-4 w-4 stroke-1 md:h-5 md:w-5'} />
 					</Button>
 				</div>
 			</form>
