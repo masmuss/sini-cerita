@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { User } from 'lucide-react'
 
 import { cn, formatDateDifference } from '@/lib/utils'
 
@@ -10,6 +9,7 @@ type QuestionHeaderProps = {
 	date: string
 	className?: string
 }
+
 export default function QuestionHeader(props: Readonly<QuestionHeaderProps>) {
 	const { name, date, className } = props
 	return (
