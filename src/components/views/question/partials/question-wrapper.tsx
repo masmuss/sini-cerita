@@ -10,13 +10,7 @@ function QuestionWrapper(props: Readonly<QuestionWrapperProps>) {
 	const { children, isReply } = props
 
 	return (
-		<article
-			className={cn(
-				isReply && 'ml-6 lg:ml-12',
-				'px-4 py-4 text-sm',
-				'md:p-6 md:text-base'
-			)}
-		>
+		<article className={cn(isReply && 'ml-4 lg:ml-12', 'py-4 pl-4', 'md:p-6')}>
 			{children}
 		</article>
 	)

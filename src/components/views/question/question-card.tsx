@@ -14,9 +14,13 @@ export default async function QuestionCard(props: Readonly<QuestionCardProps>) {
 
 	return (
 		<QuestionWrapper>
-			<QuestionHeader name={'Anonim'} date={question.createdAt} />
+			<QuestionHeader
+				name={'Anonim'}
+				date={question.createdAt}
+				className={'mb-2'}
+			/>
 			<QuestionContent>{question.text}</QuestionContent>
-			{auth && <QuestionFooter questionId={question._id.toString()}/>}
+			{auth && <QuestionFooter questionId={question._id.toString()} />}
 		</QuestionWrapper>
 	)
 }

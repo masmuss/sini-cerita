@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Roboto_Mono } from 'next/font/google'
+import { Source_Sans_3 } from 'next/font/google'
 import './globals.css'
 import React from 'react'
 import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui/sonner'
 
-const robotoMono = Roboto_Mono({ subsets: ['latin'] })
+const sourceSans = Source_Sans_3({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
 	metadataBase: new URL(
@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="id">
-			<body className={cn(robotoMono.className, 'antialiased')}>
+			<body className={cn(sourceSans.className, 'antialiased')}>
 				{children}
 			</body>
 			<Toaster />

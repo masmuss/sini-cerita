@@ -8,11 +8,12 @@ import { cn, formatDateDifference } from '@/lib/utils'
 type QuestionHeaderProps = {
 	name: string
 	date: string
+	className?: string
 }
 export default function QuestionHeader(props: Readonly<QuestionHeaderProps>) {
-	const { name, date } = props
+	const { name, date, className } = props
 	return (
-		<header className={'mb-2 flex items-center justify-between'}>
+		<header className={cn('flex items-center justify-between', className)}>
 			<div className={'flex items-center'}>
 				<p
 					className={cn(
@@ -21,7 +22,6 @@ export default function QuestionHeader(props: Readonly<QuestionHeaderProps>) {
 						'dark:text-white'
 					)}
 				>
-					<User className={'mr-2 h-5 w-5 md:h-7 md:w-7'} />
 					{name}
 				</p>
 				<p
