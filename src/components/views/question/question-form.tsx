@@ -9,7 +9,7 @@ import questionSchema from '@/lib/schemas/question-schema'
 import { createQuestion } from '@/lib/actions/question-action'
 import * as z from 'zod'
 import { toast } from 'sonner'
-import FormButton from "@/components/partials/form/form-button";
+import FormButton from '@/components/partials/form/form-button'
 
 type FormData = z.infer<typeof questionSchema>
 
@@ -68,7 +68,12 @@ export default function QuestionForm() {
 							</span>
 						)}
 					</div>
-					<FormButton isSubmitting={isSubmitting} isDirty={isDirty} isValid={isValid} />
+					<FormButton
+						isSubmitting={isSubmitting}
+						isDirty={isDirty}
+						isValid={isValid}
+						label={'Kirim pertanyaan'}
+					/>
 				</div>
 			</form>
 		</Card>

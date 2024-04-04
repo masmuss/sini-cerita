@@ -4,7 +4,7 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ReplyIcon } from 'lucide-react'
 import ReplyForm from '@/components/views/reply/reply-form'
-import {cn} from "@/lib/utils";
+import { cn } from '@/lib/utils'
 
 type QuestionFooterProps = {
 	questionId: string

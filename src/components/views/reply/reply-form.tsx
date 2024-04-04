@@ -9,7 +9,7 @@ import * as z from 'zod'
 import { toast } from 'sonner'
 import { createReply } from '@/lib/actions/reply-action'
 import replySchema from '@/lib/schemas/reply-schema'
-import FormButton from "@/components/partials/form/form-button";
+import FormButton from '@/components/partials/form/form-button'
 
 type FormData = z.infer<typeof replySchema>
 
@@ -54,7 +54,7 @@ export default function ReplyForm(props: ReplyFormProps) {
 			<form action={''} onSubmit={handleSubmit(onSubmit)} method={'POST'}>
 				<Textarea
 					className={cn(
-						errors?.text?.message ? 'border border-red-400': 'border-0',
+						errors?.text?.message ? 'border border-red-400' : 'border-0',
 						'min-h-fit resize-none rounded-b-none p-4',
 						'focus-visible:ring-0 focus-visible:ring-offset-0'
 					)}
@@ -76,7 +76,12 @@ export default function ReplyForm(props: ReplyFormProps) {
 							</span>
 						)}
 					</div>
-					<FormButton isSubmitting={isSubmitting} isDirty={isDirty} isValid={isValid} />
+					<FormButton
+						isSubmitting={isSubmitting}
+						isDirty={isDirty}
+						isValid={isValid}
+						label={'Kirim jawaban'}
+					/>
 				</div>
 			</form>
 		</Card>

@@ -12,17 +12,17 @@ export async function createReply(text: string, questionId: string) {
 		const selectedQuestionId = await Question.find(
 			{ _id: questionId },
 			{ _id: 1 }
-		);
+		)
 
-		const reply = await ReplyModel.create({ text });
-		await reply.save();
+		const reply = await ReplyModel.create({ text })
+		await reply.save()
 
 		if (selectedQuestionId) {
 			await Question.findByIdAndUpdate(questionId, {
 				$push: { replies: reply._id },
 			})
 		}
-		revalidatePath('/');
+		revalidatePath('/')
 	} catch (error) {
 		// @ts-ignore
 		return { error: error?.message as string }
