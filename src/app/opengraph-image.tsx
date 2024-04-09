@@ -73,8 +73,7 @@ export default async function Image() {
 						fontWeight: 700,
 					}}
 				>
-					Tanya
-					<span>In</span>
+					Ask Me Anything
 				</div>
 			</div>
 		),
