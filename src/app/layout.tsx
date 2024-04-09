@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 			? 'https://ask.khoirul.me'
 			: 'http://localhost:3000'
 	),
-	title: 'Tanya.in',
+	title: 'AMA | Khoirul',
 	description: 'Tanya apapun atau beri kritik dan saran buat aku di sini.',
 }
 
