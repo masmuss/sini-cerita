@@ -14,22 +14,17 @@ export default function QuestionHeader(props: Readonly<QuestionHeaderProps>) {
 	const { name, date, className } = props
 	return (
 		<header className={cn('flex items-center justify-between', className)}>
-			<div className={'flex items-center'}>
+			<div className={'flex items-center gap-2'}>
 				<p
 					className={cn(
-						'mr-3 inline-flex items-center text-xs font-semibold text-gray-900',
-						'md:text-sm',
-						'dark:text-white'
+						'inline-flex items-center text-xs font-semibold text-neutral-600',
+						'md:text-sm'
 					)}
 				>
 					{name}
 				</p>
-				<p
-					className={cn(
-						'text-xs text-gray-600 dark:text-gray-400',
-						'md:text-sm'
-					)}
-				>
+				&mdash;
+				<p className={cn('text-xs text-neutral-600', 'md:text-sm')}>
 					<time dateTime={date} title={date}>
 						{formatDateDifference(date)}
 					</time>

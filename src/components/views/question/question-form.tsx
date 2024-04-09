@@ -10,6 +10,7 @@ import { createQuestion } from '@/lib/actions/question-action'
 import * as z from 'zod'
 import { toast } from 'sonner'
 import FormButton from '@/components/partials/form/form-button'
+import { Label } from '@/components/ui/label'
 
 type FormData = z.infer<typeof questionSchema>
 
@@ -27,8 +28,8 @@ export default function QuestionForm() {
 	async function onSubmit(formData: FormData & FieldValues) {
 		await createQuestion(formData.text)
 
-		toast.success('Pertanyaan berhasil dikirim!', {
-			description: 'Bakalan dijawab kok, kalo ga lupa',
+		toast.success('Your question has been submitted!', {
+			description: 'I will answer it as soon as possible.',
 			action: {
 				label: 'Tutup',
 				onClick: () => {
@@ -40,31 +41,27 @@ export default function QuestionForm() {
 	}
 
 	return (
-		<Card className={'mt-2 border-0'}>
+		<div className={cn('mb-4 mt-2', 'lg:my-8')}>
 			<form action={''} onSubmit={handleSubmit(onSubmit)} method={'POST'}>
+				<Label htmlFor={'text'} aria-required>
+					Ask me anything
+				</Label>
 				<Textarea
 					className={cn(
 						errors?.text?.message ? 'border-red-400' : 'border-gray-200',
-						'min-h-fit resize-none rounded-b-none border p-4 text-sm',
-						'md:text-base',
-						'focus-visible:ring-0 focus-visible:ring-offset-0'
+						'min-h-fit resize-none p-4 text-sm',
+						'md:text-base'
 					)}
 					rows={5}
-					placeholder={'Tulis pertanyaan yang ingin disampaikan...'}
+					placeholder={'What do you want to ask?'}
 					autoFocus
-					// @ts-ignore
 					{...register('text', { required: true })}
 				/>
-				<div
-					className={
-						'flex w-full items-center justify-between rounded-b-md border border-t-0 p-2'
-					}
-				>
+				<div className={'flex w-full items-center justify-between py-3'}>
 					<div>
-						{/*@ts-ignore*/}
 						{errors?.text?.message && (
 							<span className={'px-2 text-xs text-red-400 md:text-sm'}>
-								Eits, pertanyaan gaboleh kosong!
+								{errors.text.message}
 							</span>
 						)}
 					</div>
@@ -72,10 +69,10 @@ export default function QuestionForm() {
 						isSubmitting={isSubmitting}
 						isDirty={isDirty}
 						isValid={isValid}
-						label={'Kirim pertanyaan'}
+						label={'Submit'}
 					/>
 				</div>
 			</form>
-		</Card>
+		</div>
 	)
 }

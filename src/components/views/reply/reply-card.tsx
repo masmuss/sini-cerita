@@ -13,12 +13,12 @@ function ReplyCard(props: Readonly<ReplyCardProps>) {
 
 	return (
 		<QuestionWrapper isReply={true} {...props}>
-			<QuestionHeader
+			{/* <QuestionHeader
 				name={'Yang punya web'}
 				date={reply.createdAt.toString()}
 				className={'mb-2'}
-			/>
-			<QuestionContent>{reply.text}</QuestionContent>
+			/> */}
+			<QuestionContent isReply>{reply.text}</QuestionContent>
 		</QuestionWrapper>
 	)
 }

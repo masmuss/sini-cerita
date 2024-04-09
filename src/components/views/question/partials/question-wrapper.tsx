@@ -1,5 +1,6 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
+import { CornerDownRight } from 'lucide-react'
 
 type QuestionWrapperProps = {
 	children: React.ReactNode
@@ -10,9 +11,10 @@ function QuestionWrapper(props: Readonly<QuestionWrapperProps>) {
 	const { children, isReply } = props
 
 	return (
-		<article className={cn(isReply && 'ml-4 lg:ml-12', 'py-4 pl-4', 'md:p-6')}>
-			{children}
-		</article>
+		<div className="flex w-full flex-1 items-center justify-start gap-3">
+			{isReply && <CornerDownRight className={cn('ml-4 text-neutral-400')} />}
+			<article className={cn('w-full')}>{children}</article>
+		</div>
 	)
 }
 

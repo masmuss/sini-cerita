@@ -10,7 +10,6 @@ export function formatDateDifference(inputDate: string): string {
 	const currentDate = new Date()
 	const timeDifference = currentDate.getTime() - date.getTime()
 
-	// Function to convert milliseconds to human-readable time
 	const msToTime = (duration: number): string => {
 		const seconds = Math.floor((duration / 1000) % 60)
 		const minutes = Math.floor((duration / (1000 * 60)) % 60)
@@ -19,14 +18,14 @@ export function formatDateDifference(inputDate: string): string {
 		const weeks = Math.floor(duration / (1000 * 60 * 60 * 24 * 7))
 		const years = Math.floor(duration / (1000 * 60 * 60 * 24 * 365))
 
-		if (years > 0) return `${years} tahun lalu`
-		if (weeks > 0) return `${weeks} minggu lalu`
-		if (days > 0) return `${days} hari lalu`
-		if (hours > 0) return `${hours} jam yang lalu`
-		if (minutes > 0) return `${minutes} menit yang lalu`
-		if (seconds > 0) return `${seconds} detik yang lalu`
+		if (years > 0) return `${years} year${years > 1 ? 's' : ''} ago`
+		if (weeks > 0) return `${weeks} week${weeks > 1 ? 's' : ''} ago`
+		if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`
+		if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`
+		if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
+		if (seconds > 0) return `${seconds} second${seconds > 1 ? 's' : ''} ago`
 
-		return 'Baru aja'
+		return 'just now'
 	}
 
 	return msToTime(timeDifference)

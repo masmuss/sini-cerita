@@ -3,9 +3,8 @@ import { Question } from '@/lib/types/question'
 import QuestionCard from '@/components/views/question/question-card'
 import ReplyCard from '@/components/views/reply/reply-card'
 import { Reply } from '@/lib/types/reply'
-import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import {validateRequest} from "@/lib/auth";
+import { validateRequest } from '@/lib/auth'
 
 type QuestionsListProps = {
 	questions: Question[]
@@ -17,24 +16,33 @@ export default async function QuestionsList({
 	const { user } = await validateRequest()
 
 	return (
-		<section className={'bg-white py-8 lg:py-16'}>
-			<div className={cn('mx-auto w-full space-y-4', 'md:max-w-4xl')}>
+		<section className={'border-t bg-white py-4 lg:py-8'}>
+			<h2
+				className={cn(
+					'mb-4 text-center text-xl font-semibold tracking-wide',
+					'md:text-3xl md:font-bold',
+					'lg:text-4xl'
+				)}
+			>
+				Timeline
+			</h2>
+			<div className={cn('mx-auto w-full space-y-2', 'md:max-w-4xl')}>
 				{questions.length === 0 && (
 					<p className={'text-center text-gray-500'}>
-						Belum ada pertanyaan, jadilah yang pertama bertanya!
+						No questions found. Be the first to ask!
 					</p>
 				)}
 				{questions.map((question: Question) => (
-					<Card
-						className={cn('space-y divide-y pr-4', 'md:p-4 md:pr-10')}
+					<article
+						className={cn('space-y-4 pr-4', 'md:p-4 md:pr-10')}
 						key={question._id}
 					>
-						<QuestionCard question={question} auth={!!user}/>
+						<QuestionCard question={question} auth={!!user} />
 						{question.replies &&
 							question.replies.map((reply: Reply) => (
 								<ReplyCard reply={reply} key={reply._id} />
 							))}
-					</Card>
+					</article>
 				))}
 			</div>
 		</section>
