@@ -10,11 +10,11 @@ const sourceSans = Source_Sans_3({ subsets: ['latin'] })
 export const metadata: Metadata = {
 	metadataBase: new URL(
 		process.env.NODE_ENV === 'production'
-			? 'https://ask.khoirul.me'
+			? 'https://ama.khoirul.site'
 			: 'http://localhost:3000'
 	),
 	title: 'AMA | Khoirul',
-	description: 'Tanya apapun atau beri kritik dan saran buat aku di sini.',
+	description: 'Ask or share anything with me',
 }
 
 export default function RootLayout({
